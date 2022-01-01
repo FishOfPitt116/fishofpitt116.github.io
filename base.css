@@ -79,3 +79,7 @@ p {
     width: 144px;
     height: 144px;
 }
+
+.description {
+    text-align: left;
+}
