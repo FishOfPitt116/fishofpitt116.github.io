@@ -4,16 +4,23 @@
         Pitt Gold - #FFB81C
 */
 
-body {
-    /* background-color: #003594; */
-}
-
 header {
     text-align: center;
 }
 
 h1 {
     font-family: serif;
+}
+
+h3 {
+    text-indent: 24px;
+    font-size: 24px;
+}
+
+p {
+    text-indent: 48px;
+    margin-left: 24px;
+    font-size: 18px;
 }
 
 .navigation ul {
@@ -57,12 +64,8 @@ h1 {
     display: block;
 }
 
-body {
-    text-align: center;
-}
-
 .social-media {
-    
+    text-align: center;
     line-height: 1000%;
     word-spacing: 40px;
 }
