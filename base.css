@@ -10,18 +10,20 @@ header {
 }
 
 h1 {
+    text-indent: 20%;
+    margin-left: 12px;
     font-family: "Georgia";
 }
 
 h3 {
-    text-indent: 24px;
+    text-indent: 20%;
+    margin-left: 24px;
     font-size: 24px;
     font-family: "Georgia";
 }
 
 p {
-    text-indent: 48px;
-    margin-left: 24px;
+    margin-left: 25%;
     font-size: 20px;
     font-family: "Helvetica";
 }
@@ -30,16 +32,16 @@ p {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    width: 25%;
+    width: 20%;
+    background-color: #f1f1f1;
     height: 100%;
     position: fixed;
     overflow: auto;
 }
 
 .navigation li {
-    float: left;
-    /* display: block; */
-    border-bottom: 1px solid #bbb;
+    text-align: center;
+    border-bottom: 1px solid #f1f1f1;
 }
 
 .navigation a {
@@ -50,14 +52,7 @@ p {
     text-decoration: none;
 }
 
-.navigation li a {
-    display: block;
-    width: 200px;
-    padding: 8px 16px;
-    text-decoration: none;
-}
-
-.navigation li a:hover, .portfolio:hover .dropbtn {
+.navigation a:hover, .portfolio:hover .dropbtn {
     background-color: #ffb81c;
     transition-duration: 0.8s;
     font-size: 14pt;
@@ -79,8 +74,9 @@ p {
 }
 
 .social-media {
+    margin-left: 20%;
     text-align: center;
-    line-height: 1000%;
+    line-height: 500%;
     word-spacing: 40px;
 }
 
@@ -96,4 +92,9 @@ p {
 
 .description {
     text-align: left;
+}
+
+.documents p {
+    font-size: 11pt;
+    text-align: center;
 }
