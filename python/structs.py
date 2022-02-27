@@ -8,6 +8,7 @@ class Node:
 		self.description = "" 	# str
 		self.preqs = None 		# List[(Node, bool)]
 		self.completed = False	# bool
+		self.prereq_count = 0
 	
 	def __init__(self, course_obj): 	# Overloaded constructor: Node(course_obj)
 		self.dept_code = course_obj.subject_code
@@ -15,8 +16,9 @@ class Node:
 		self.course_title = course_obj.course_title
 		self.section_details = course.get_extra_section_details(section=course_obj.sections[0], term=course_obj.sections[0].term, class_number=self.course_no)
 		self.description = self.section_details.description
-		self.preqs = self.parse_preqs(section_details.preqs)
+		# self.preqs = self.parse_preqs(section_details.preqs)
 		self.completed = False
+		self.prereq_count = 0
 
 	def __str__(self):		# toString() of Node
 		return self.dept_code + " " + self.course_no
@@ -27,7 +29,8 @@ class Node:
 			"id" : self.course_no, 				# can change back to course_no, would need to modify js code
 			"course_title" : self.course_title,
 			"description" : self.description,
-			"completed" : self.completed
+			"completed" : self.completed,
+			"prereq_count" : self.prereq_count
 		}
 	
 	def parse_preqs(self, preqs):
@@ -56,7 +59,7 @@ class Node:
 						if i >= len(preqs_string)-dept_code_len:
 							if len(someAndList) > 1:
 								someAndList += [code] 
-							else if len(someOrList) > 1:
+							elif len(someOrList) > 1:
 								someOrList += [code]
 							break
 					# Question: Can both lists contain code at the same time?
@@ -77,7 +80,7 @@ class Node:
 				someOrList = [False]
 				
 			# contains non-parentheses first
-			else if preqs_string[i:i+dept_code_len] == dept_code:
+			elif preqs_string[i:i+dept_code_len] == dept_code:
 				code = preqs_string[i+dept_code_len+1:i+dept_code_len+5]
 				# append to listOfReqs
 		return listOfReqs 
@@ -147,7 +150,7 @@ class Graph:	# Graph class
 			# If valid, map course_num to node (course_obj)
 			try:
 				dict[num] = Node(obj)
-			except:
+			except TypeError:
 				print("type error on class", num)
 				continue
 			
@@ -170,6 +173,8 @@ class Graph:	# Graph class
 					# Add 1501 node (dependent) to 445 parent (prereq) in dict assuming 445 exists as prereq in dictionary
 					if code in dict:
 						self.add_node_ele(dict[code], dict[num])
+						dict[num].prereq_count += 1
+			print(num, dict[num].prereq_count)
 		return dict
 
 	# Convert Graph to JSON format

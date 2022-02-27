@@ -1,6 +1,7 @@
 var term = "2224_";
 var code = "CS";
-var preqs = {};
+var preqs = new Map();
+var completed = new Map();
 
 var apply = document.getElementById("apply");
 apply.addEventListener('click', () => {
@@ -56,6 +57,14 @@ function setGraph(term, code) {
       .force("center", d3.forceCenter(width / 2, height / 2));
 
   d3.json("../json/" + term + code + ".json", function(error, graph) {
+    console.log(graph.nodes);
+    preqs = new Map();
+    completed = new Map();
+    for (node of graph.nodes) {
+      preqs.set(node.id, node.prereq_count);
+      completed.set(node.id, false);
+    }
+    console.log(preqs);
     if (error) throw error;
 
     var link = svg.append("g")
@@ -75,10 +84,13 @@ function setGraph(term, code) {
 
     var circles = node.append("circle")
       .attr("r", 20)
-      .attr("fill", function(d) { if (d.completed == false) return 'grey'; return 'lightgreen'; })
+      .attr("fill", function(d) { if (completed.get(d.id) == false) { if (preqs.get(d.id) == 0) { return 'yellow'; } else { return 'grey'; } } else { return 'lightgreen'; }} )
       .on("dblclick", function(d) {
         currentColor = d3.select(this).attr("fill")
-        currentColor = currentColor == "lightgreen" ? "grey" : "lightgreen";
+        if (currentColor == "grey") {
+          return;
+        }
+        currentColor = currentColor == "lightgreen" ? "yellow" : "lightgreen";
         d3.select(this).attr("fill", currentColor);
       })
       .on("contextmenu", function(d) {
@@ -195,5 +207,9 @@ function setGraph(term, code) {
   //Zoom functions 
   function zoom_actions(){
       g.attr("transform", d3.event.transform)
+  }
+
+  function check_completed(d, node_id) {
+
   }
 }

@@ -3,10 +3,9 @@ import structs
 
 # Returns courses available in specific term for a particular department ("2231" is Fall '22 and "CS" is CS classes)
 # Returns Subject object (has department, courses (dictionary of str to Course object), term)
-CScourses = (course.get_courses("2231", "CS"))
 
-for i in CScourses:
-    Node()
+cs_graph = structs.Graph("2231", "CS")
+print(cs_graph.toJSON())
 
 '''
 # CScourses.courses['0007'] returns Course object (subject_code, course_number, course_title, sections --> list of Section objects) 

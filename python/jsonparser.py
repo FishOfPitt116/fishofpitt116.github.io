@@ -42,7 +42,7 @@ def term_get_json(term, course_code):
 codes = course.get_subject_codes()
 
 # Dump, convert Python object into an equivalent JSON object
-for code in range(13, len(codes)):
+for code in range(21, len(codes)):
 	print(codes[code])
 	with open("../json/2221_" + codes[code] + ".json", "w") as f:
 		try:
