@@ -84,13 +84,10 @@ function setGraph(term, code) {
 
     var circles = node.append("circle")
       .attr("r", 20)
-      .attr("fill", function(d) { if (completed.get(d.id) == false) { if (preqs.get(d.id) == 0) { return 'yellow'; } else { return 'grey'; } } else { return 'lightgreen'; }} )
+      .attr("fill", function(d) { return "grey"; } )
       .on("dblclick", function(d) {
         currentColor = d3.select(this).attr("fill")
-        if (currentColor == "grey") {
-          return;
-        }
-        currentColor = currentColor == "lightgreen" ? "yellow" : "lightgreen";
+        currentColor = currentColor == "lightgreen" ? "grey" : "lightgreen";
         d3.select(this).attr("fill", currentColor);
       })
       .on("contextmenu", function(d) {
