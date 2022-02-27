@@ -1,3 +1,14 @@
-# fishofpitt116.github.io
+# PittCourseHelper
+Our Project for the 2022 SteelHacks Hackathon Competition.
 
-Personal website for Robert Fishel, showcasing my work as a Computer Science student and prospective Software Engineer.
+To enter venv: ` source .steelHacksVENV/bin/activate `
+
+<br>
+
+Once in venv, you might have to run: ` pip install git+https://github.com/pittcsc/PittAPI.git@robbie-dev `
+
+<br>
+
+To exit venv: ` deactivate `
+
+<br>

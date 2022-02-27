@@ -1,48 +1,121 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Robbie Fishel</title>
-        <link rel="stylesheet" href="base.css">
-    </head>
-    <header>
-        <div class="navigation">
+<html lang='en'>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        html {
+            margin-left: 15%;
+            margin-right: 15%;
+            background-color: rgb(245, 234, 219);
+        }
+        
+        #datavis {
+            text-align: center;
+        }
+        
+        .links line {
+            stroke: #999;
+            stroke-opacity: 0.6;
+        }
+        
+        .nodes circle {
+            stroke: #fff;
+            stroke-width: 1.5px;
+        }
+        
+        text {
+            font-family: sans-serif;
+            font-size: 10px;
+        }
+        
+        #border {
+            border: 1px solid black;
+        }
+        
+        h1 {
+            text-align: center;
+        }
+        
+        #menus {
+            text-align: center;
+            padding-bottom: 15px;
+        }
+        
+        #title {
+            padding-top: 15px;
+            padding-bottom: 20px;
+            text-align: center;
+            /* background-color: #FFB81C; */
+        }
+
+        #alertDiv {
+          position: absolute;
+          top: 50%;
+          left: 15%;
+          text-align: center;
+          z-index:2;
+          background-color: white;
+          border: 2px solid black;
+          margin-left: 15px;
+          padding: 15px;
+          margin-top: -100px;
+          margin-left: -200px;
+        }
+
+        p {
+          font-size: 18pt;
+        }
+    </style>
+    <div id="title">
+        <img src="resources/myCourseBuilder.png" width=480px height=480px style="display:inline-block;">
+    </div>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+
+<body=>
+    <br>
+    <div id="menus">
+        <select id="term-select">
+        <option>Fall</option>
+        <option selected>Spring</option>
+      </select>
+        <select id="code-select">
+        <option selected>CS</option>
+      </select>
+        <button id="apply">APPLY</button>
+        <script src="js/fillselect.js"></script>
+    </div>
+
+    <div id="datavis">
+        <svg id="border" width="992" height="800" style="background-color: #FFFFFF"></svg>
+        <script src="js/graphvis.js"></script>
+    </div>
+
+    <div id="desc" style="background-color: #FFB81C;">
+        <p>
+            How to use the myCourseBuilder model:
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="contact.html">Contact Info</a></li>
-                <li><a href="resume.html">Resume</a></li>
-                <!-- <li><a href="portfolio.html">Portfolio</a></li> -->
-                <li class="portfolio">
-                    <a href="javascript:void(0)" class="dropbtn">Portfolio</a>
-                    <div class="portfolio-content">
-                        <a href="portfolio/home.html">Portfolio Home</a>
-                        <a href="portfolio/robotics.html">Tech Inspiration: Robotics</a>
-                        <a href="portfolio/sports.html">Tech Inspiration: Sports</a>
-                        <a href="portfolio/coursework.html">College Coursework</a>
-                        <a href="portfolio/wtboathouse.html">Summer Boat Pass Script</a>
-                        <a href="portfolio/courseweb.html">Pitt Course Web</a>
-                    </div>
+                <li>
+                    Select your relevant department code and semester (spring or fall) from the above drop-downs and hit the submit button. From here, myCourseBuilder will generate all courses offered under that department for the given term and place them in a graph, to
+                    be displayed in the box above.
+                </li>
+                <li>
+                    Click and drag class "nodes" around the diagram in order to make it more clear and apparent what courses are connected and how exactly they are.
+                </li>
+                <li>
+                    Click and drag on the box to get a better view of all the courses being offered in the given semester! You can also zoom in to see a more clear picture of which courses are prerequisites for others.
+                </li>
+                <li>
+                    Double click on a course in order to mark it as "completed." As a result of this "completion," other nodes will become colored light green, indicating you should now be capable of completing them too during the given semester.
+                </li>
+                <li>
+                    Right click on a course in order to read more information on what exactly the course has to offer. A number certainly won't tell you the whole story when it comes to what a course has to offer!
                 </li>
             </ul>
-        </div>
-        <h1>Robbie Fishel</h1>
-        <!-- <img src="images/robbie1.png", width=384, height=512> -->
-    </header>
-    <body>
-        <div class="intro">
-            <!-- <br> -->
-            <p>
-                Hello! My name is Robbie Fishel, and I'm a second year Computer 
-                Science student at the University of Pittsburgh. This is a website
-                where you can find information about my academic and professional careers,
-                as well as personal projects and interests related to computer science and 
-                software development. Here is some base information about my background and
-                experience, which will be detailed in-depth throughout this site.
-            </p>
-            <!-- <h3>Programming Interest & Experience</h3> -->
-        </div>
+        </p>
+    </div>
+
     </body>
-    <footer>
-        <hr>
-    </footer>
+
 </html>
